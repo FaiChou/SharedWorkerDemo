@@ -13,8 +13,7 @@ function add() {
   myWorker.port.postMessage('add');
 }
 
-// call on page B
-function goBackA() {
-  myWorker.port.postMessage('back');
-  history.back()
+function getVal() {
+  myWorker.port.postMessage('get')
 }
+getVal()

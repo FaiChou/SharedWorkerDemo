@@ -3,14 +3,20 @@ onconnect = function(e) {
   var port = e.ports[0];
 
   port.onmessage = function(e) {
-    a += 1
-    console.log(e)
-    if (e.data === 'add') {
-      port.postMessage(a)
-    } else {
-      setTimeout(() => {
+    switch (e.data) {
+      case 'add': {
+        a += 1
         port.postMessage(a)
-      }, 800);
+        break
+      }
+      case 'get': {
+        port.postMessage(a)
+        break
+      }
+      default: {
+        port.postMessage(a)
+        break
+      }
     }
   }
 }
